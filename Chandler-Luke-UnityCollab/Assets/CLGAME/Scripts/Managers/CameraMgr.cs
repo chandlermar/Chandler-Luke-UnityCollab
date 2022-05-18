@@ -7,6 +7,7 @@ public class CameraMgr : MonoBehaviour
     /*---------- Awake ----------*/
     // Static Instance of CameraMgr for global usage
     public static CameraMgr inst;
+ 
     private void Awake()
     {
         inst = this;
