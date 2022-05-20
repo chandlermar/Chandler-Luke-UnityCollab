@@ -7,7 +7,7 @@ public class GameMgr : MonoBehaviour
     public static GameMgr inst;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         inst = this;
     }
