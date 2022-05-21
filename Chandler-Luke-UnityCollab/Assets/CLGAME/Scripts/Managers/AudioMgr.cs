@@ -21,7 +21,6 @@ public class AudioMgr : MonoBehaviour
         DreamcoreBackgroundSource.volume = .2f;
         DreamcoreBackgroundSource.clip = summerBirdsAudio;
         DreamcoreBackgroundSource.Play();
-        Debug.Log("Birds chirping");
     }
     // Update is called once per frame
     void Update()
@@ -30,7 +29,6 @@ public class AudioMgr : MonoBehaviour
         /* NOTE** we should add a list of sounds to queue to avoid repetitive sounds */
         if (!DreamcoreBackgroundSource.isPlaying)
         {
-            Debug.Log("Birds stopped chirping");
             DreamcoreBackgroundSource.Play();
         }
     }
