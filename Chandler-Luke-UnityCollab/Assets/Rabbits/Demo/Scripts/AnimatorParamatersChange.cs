@@ -21,11 +21,7 @@ using UnityEngine;
         // Update is called once per frame
         void Update()
         {
-            if (this.tag == "Male")
-            {
-                m_animator.SetTrigger("Next");
-                m_animator.SetTrigger("Next");
-            }    
+             
         }
 
         private void OnGUI()
