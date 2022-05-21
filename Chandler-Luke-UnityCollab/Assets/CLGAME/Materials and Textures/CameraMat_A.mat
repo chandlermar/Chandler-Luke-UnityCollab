@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CameraMat_B
+  m_Name: CameraMat_A
   m_Shader: {fileID: 4800000, guid: 03deba91c89a7e64ca471ddf187a196c, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

@@ -7,6 +7,8 @@ public class GameMgr : MonoBehaviour
     public static GameMgr inst;
 
     [Header("Portal Setup")]
+    public Camera cameraA;
+    public Material cameraMatA;
     public Camera cameraB;
     public Material cameraMatB;
 
@@ -24,6 +26,13 @@ public class GameMgr : MonoBehaviour
         }
         cameraB.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
         cameraMatB.mainTexture = cameraB.targetTexture;
+        
+        if (cameraA.targetTexture != null)
+        {
+            cameraA.targetTexture.Release();
+        }
+        cameraA.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        cameraMatA.mainTexture = cameraA.targetTexture;
     }
 
     // Update is called once per frame
