@@ -2405,11 +2405,7 @@ MonoBehaviour:
   jumpForce: 8
   mouseSensitivity: 0.8
   gravity: -9.81
-  isCrouching: 0
-  crouchingHeight: 1.25
-  standingHeight: 1.8
   walkSpeed: 6
-  crouchSpeed: 5
   sprintSpeed: 8
 --- !u!4 &1656430866 stripped
 Transform:

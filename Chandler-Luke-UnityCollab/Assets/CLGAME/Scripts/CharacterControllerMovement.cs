@@ -24,12 +24,8 @@ public class CharacterControllerMovement : MonoBehaviour
 
 
     //mechanic variables
-    public bool isCrouching = false;
-    [SerializeField] float crouchingHeight = 1.25f;
-    [SerializeField] float standingHeight = 1.8f;
 
     public float walkSpeed;
-    public float crouchSpeed;
     public float sprintSpeed;
 
 
@@ -47,7 +43,6 @@ public class CharacterControllerMovement : MonoBehaviour
 
         MovePlayer();
         MoveCamera();
-        Crouch();
         Sprint();
     }
 
@@ -83,20 +78,6 @@ public class CharacterControllerMovement : MonoBehaviour
 
         transform.Rotate(0f, PlayerMouseInput.x * mouseSensitivity, 0f);
         playerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
-    }
-
-    void Crouch()
-    {
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            controller.height = crouchingHeight;
-            speed = crouchSpeed;
-        }
-        else
-        {
-            controller.height = standingHeight;
-            speed = walkSpeed;
-        }
     }
 
     void Sprint()
