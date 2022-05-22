@@ -28,7 +28,7 @@ public class AudioMgr : MonoBehaviour
     private void Start()
     {
         DreamcoreBackgroundSource.volume = .2f;
-        DreamcoreBackgroundSource.Play();
+        //DreamcoreBackgroundSource.Play();
     }
     // Update is called once per frame
     void Update()
@@ -40,10 +40,10 @@ public class AudioMgr : MonoBehaviour
 
         /* If background sfx not playing, play */
         /* NOTE** we should add a list of sounds to queue to avoid repetitive sounds */
-        if (!DreamcoreBackgroundSource.isPlaying)
+        /*if (!DreamcoreBackgroundSource.isPlaying)
         {
             DreamcoreBackgroundSource.PlayOneShot(birdSounds[Random.Range(0, birdSounds.Length)]);
-        }
+        }*/
     }
 
     public void PlayFootstep()
