@@ -13,8 +13,11 @@ public class AudioMgr : MonoBehaviour
     public AudioSource DreamcoreBackgroundSource;
     public AudioClip[] birdSounds;
 
-    [SerializeField] AudioSource DiegeticSound;
+    [SerializeField] AudioSource FootstepSounds;
+    public AudioClip windSounds;
     public AudioClip[] grassSounds;
+
+    [SerializeField] AudioSource DiegeticSound;
 
 
     // Start is called before the first frame update
@@ -29,15 +32,12 @@ public class AudioMgr : MonoBehaviour
     {
         DreamcoreBackgroundSource.volume = .2f;
         //DreamcoreBackgroundSource.Play();
+
+        PlayWind();
     }
     // Update is called once per frame
     void Update()
     {
-        if (moveScript.controller.isGrounded)
-        {
-
-        }
-
         /* If background sfx not playing, play */
         /* NOTE** we should add a list of sounds to queue to avoid repetitive sounds */
         /*if (!DreamcoreBackgroundSource.isPlaying)
@@ -48,9 +48,20 @@ public class AudioMgr : MonoBehaviour
 
     public void PlayFootstep()
     {
-        DiegeticSound.volume = Random.Range(0.1f,0.3f);
-        DiegeticSound.pitch = Random.Range(0.5f, 1f);
-        DiegeticSound.PlayOneShot(grassSounds[Random.Range(0, grassSounds.Length)]);
+        if (moveScript.controller.isGrounded)
+        {
+            FootstepSounds.volume = Random.Range(0.1f, 0.3f);
+            FootstepSounds.pitch = Random.Range(0.5f, 1f);
+            FootstepSounds.PlayOneShot(grassSounds[Random.Range(0, grassSounds.Length)]);
+        }
+    }
+
+    void PlayWind()
+    {
+        DiegeticSound.clip = windSounds;
+        DiegeticSound.volume = 0.1f;
+        DiegeticSound.loop = true;
+        DiegeticSound.Play();
     }
 }
 
