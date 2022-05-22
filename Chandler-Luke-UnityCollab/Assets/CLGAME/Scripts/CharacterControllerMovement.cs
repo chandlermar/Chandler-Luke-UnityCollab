@@ -14,7 +14,7 @@ public class CharacterControllerMovement : MonoBehaviour
 
     Transform playerCamera;
 
-    CharacterController controller;
+    public CharacterController controller;
 
     public float speed;
     [SerializeField] float jumpForce;

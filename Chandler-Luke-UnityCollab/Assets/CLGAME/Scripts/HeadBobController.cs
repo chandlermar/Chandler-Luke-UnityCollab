@@ -7,16 +7,18 @@ public class HeadBobController : MonoBehaviour
 
     public GameObject Player;
     CharacterControllerMovement MovementScript;
+    AudioMgr audioScript;
 
     private float timer = 0.0f;
-    [SerializeField] float bobbingSpeed = 0.18f;
-    [SerializeField] float bobbingAmount = 0.2f;
-    [SerializeField] float midpoint = 2.0f;
+    [SerializeField] public float bobbingSpeed = 0.085f;
+    [SerializeField] float bobbingAmount = 0.1f;
+    [SerializeField] float midpoint = 0.6f;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         MovementScript = Player.GetComponent<CharacterControllerMovement>();
+        audioScript = AudioMgr.inst;
     }
 
     void Update()
@@ -38,6 +40,7 @@ public class HeadBobController : MonoBehaviour
             if (timer > Mathf.PI * 2)
             {
                 timer = timer - (Mathf.PI * 2);
+                audioScript.PlayFootstep();
             }
         }
         if (waveslice != 0)
