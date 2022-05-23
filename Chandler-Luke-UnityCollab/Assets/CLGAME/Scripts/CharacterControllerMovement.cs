@@ -16,7 +16,7 @@ public class CharacterControllerMovement : MonoBehaviour
 
     public CharacterController controller;
 
-    public float speed;
+    private float speed;
     [SerializeField] float jumpForce;
     [SerializeField] float mouseSensitivity;
     [SerializeField] float gravity = -9.81f;
