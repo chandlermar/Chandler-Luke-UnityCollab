@@ -10,7 +10,12 @@ public class AudioMgr : MonoBehaviour
 
     public static AudioMgr inst;
 
+    [HideInInspector]
     public string sceneName;
+
+    [Header("Number Variables")]
+    [SerializeField] [Range(5000,20000)] float muffledFrequency = 19000;
+    [SerializeField] [Range(5000, 20000)] float normalFrequency = 5000;
 
     [Header("Dreamcore Background Sounds")]
     public AudioSource DreamcoreBackgroundSource;
@@ -94,18 +99,18 @@ public class AudioMgr : MonoBehaviour
     {
         HouseBackgroundSource.volume = 0.3f;
         HouseBackgroundSource.loop = true;
-        highPass.cutoffFrequency = 19500;
+        highPass.cutoffFrequency = muffledFrequency;
         HouseBackgroundSource.PlayOneShot(cricketsSound);
     }
 
     public void HouseHighPassOff()
     {
-        highPass.cutoffFrequency = 5000;
+        highPass.cutoffFrequency = normalFrequency;
     }
 
     public void HouseHighPassOn()
     {
-        highPass.cutoffFrequency = 19500;
+        highPass.cutoffFrequency = muffledFrequency;
     }
 }
 

@@ -664,8 +664,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.470734, y: 2.8635464, z: 14.792059}
-  m_Center: {x: -0.75041676, y: 0.9317732, z: -2.1796405}
+  m_Size: {x: 8.470734, y: 2.8635464, z: 14.62154}
+  m_Center: {x: -0.75041676, y: 0.9317732, z: -2.2649}
 --- !u!114 &284218888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2800,6 +2800,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 
+  muffledFrequency: 19000
+  normalFrequency: 5000
   DreamcoreBackgroundSource: {fileID: 167844830}
   birdSounds:
   - {fileID: 8300000, guid: 8514090914e8ef74fa1bba1d621f2019, type: 3}
