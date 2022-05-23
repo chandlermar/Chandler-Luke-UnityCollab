@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CLGAME/Scenes/House.unity
     guid: 0bce5907d797a4cd8b0660dc119867e8
-  - enabled: 0
+  - enabled: 1
     path: Assets/CLGAME/Scenes/Dreamcore Hills.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

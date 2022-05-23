@@ -19,6 +19,7 @@ public class AudioMgr : MonoBehaviour
     [Header("House Background Sounds")]
     public AudioSource HouseBackgroundSource;
     public AudioClip cricketsSound;
+    public AudioHighPassFilter highPass;
 
     [SerializeField] AudioSource FootstepSounds;
     public AudioClip windSounds;
@@ -32,6 +33,7 @@ public class AudioMgr : MonoBehaviour
     {
         headBobScript = GameObject.FindGameObjectWithTag("Player").GetComponent<HeadBobController>();
         moveScript = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControllerMovement>();
+        highPass = GetComponentInChildren<AudioHighPassFilter>();
         inst = this;
     }
 
@@ -51,7 +53,7 @@ public class AudioMgr : MonoBehaviour
         {
             HouseBackgroundSource.volume = .05f;
 
-            //PlayCrickets();
+            PlayCrickets();
         }
     }
     // Update is called once per frame
@@ -61,12 +63,7 @@ public class AudioMgr : MonoBehaviour
         /* NOTE** we should add a list of sounds to queue to avoid repetitive sounds */
         if (sceneName == "House")
         {
-            if (!HouseBackgroundSource.isPlaying)
-            {
-                Debug.Log("true");
-                HouseBackgroundSource.Play();
-                Debug.Log("true2");
-            }
+            
         }
         else if (sceneName == "Dreamcore Hills")
         {
@@ -95,9 +92,20 @@ public class AudioMgr : MonoBehaviour
 
     void PlayCrickets()
     {
-        HouseBackgroundSource.clip = cricketsSound;
-        HouseBackgroundSource.Play();
-        Debug.Log("Crickets");
+        HouseBackgroundSource.volume = 0.3f;
+        HouseBackgroundSource.loop = true;
+        highPass.cutoffFrequency = 19500;
+        HouseBackgroundSource.PlayOneShot(cricketsSound);
+    }
+
+    public void HouseHighPassOff()
+    {
+        highPass.cutoffFrequency = 5000;
+    }
+
+    public void HouseHighPassOn()
+    {
+        highPass.cutoffFrequency = 19500;
     }
 }
 

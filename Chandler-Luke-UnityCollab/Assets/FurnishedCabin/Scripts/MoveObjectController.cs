@@ -5,7 +5,7 @@ public class MoveObjectController : MonoBehaviour
 {
 	public float reachRange = 1.8f;			
 
-	private Animator anim;
+	public Animator anim;
 	private Camera fpsCam;
 	private GameObject player;
 
@@ -16,7 +16,9 @@ public class MoveObjectController : MonoBehaviour
 	private GUIStyle guiStyle;
 	private string msg;
 
-	private int rayLayerMask; 
+	private int rayLayerMask;
+
+	public bool isOpened = false;
 
 
 	void Start()
@@ -154,7 +156,7 @@ public class MoveObjectController : MonoBehaviour
 		guiStyle.fontSize = 16;
 		guiStyle.fontStyle = FontStyle.Bold;
 		guiStyle.normal.textColor = Color.white;
-		msg = "Press E/Fire1 to Open";
+		msg = "Press E/LeftMouse to Open";
 	}
 
 	private string getGuiMsg(bool isOpen)
@@ -162,10 +164,10 @@ public class MoveObjectController : MonoBehaviour
 		string rtnVal;
 		if (isOpen)
 		{
-			rtnVal = "Press E/Fire1 to Close";
+			rtnVal = "Press E/LeftMouse to Close";
 		}else
 		{
-			rtnVal = "Press E/Fire1 to Open";
+			rtnVal = "Press E/LeftMouse to Open";
 		}
 
 		return rtnVal;
