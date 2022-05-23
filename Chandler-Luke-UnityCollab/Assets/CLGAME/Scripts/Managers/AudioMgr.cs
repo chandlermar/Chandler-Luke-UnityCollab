@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioMgr : MonoBehaviour
 {
@@ -9,9 +10,15 @@ public class AudioMgr : MonoBehaviour
 
     public static AudioMgr inst;
 
+    public string sceneName;
+
     [Header("Dreamcore Background Sounds")]
     public AudioSource DreamcoreBackgroundSource;
     public AudioClip[] birdSounds;
+
+    [Header("House Background Sounds")]
+    public AudioSource HouseBackgroundSource;
+    public AudioClip cricketsSound;
 
     [SerializeField] AudioSource FootstepSounds;
     public AudioClip windSounds;
@@ -30,20 +37,42 @@ public class AudioMgr : MonoBehaviour
 
     private void Start()
     {
-        DreamcoreBackgroundSource.volume = .2f;
-        //DreamcoreBackgroundSource.Play();
+        Scene currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
 
-        PlayWind();
+        if (sceneName == "Dreamcore Hills")
+        {
+            DreamcoreBackgroundSource.volume = .2f;
+            //DreamcoreBackgroundSource.Play();
+
+            PlayWind();
+        }
+        else if (sceneName == "House")
+        {
+            HouseBackgroundSource.volume = .05f;
+
+            //PlayCrickets();
+        }
     }
     // Update is called once per frame
     void Update()
     {
         /* If background sfx not playing, play */
         /* NOTE** we should add a list of sounds to queue to avoid repetitive sounds */
-        /*if (!DreamcoreBackgroundSource.isPlaying)
+        if (sceneName == "House")
         {
-            DreamcoreBackgroundSource.PlayOneShot(birdSounds[Random.Range(0, birdSounds.Length)]);
-        }*/
+            if (!HouseBackgroundSource.isPlaying)
+            {
+                Debug.Log("true");
+                HouseBackgroundSource.Play();
+                Debug.Log("true2");
+            }
+        }
+        else if (sceneName == "Dreamcore Hills")
+        {
+
+        }
+        
     }
 
     public void PlayFootstep()
@@ -62,6 +91,13 @@ public class AudioMgr : MonoBehaviour
         DiegeticSound.volume = 0.1f;
         DiegeticSound.loop = true;
         DiegeticSound.Play();
+    }
+
+    void PlayCrickets()
+    {
+        HouseBackgroundSource.clip = cricketsSound;
+        HouseBackgroundSource.Play();
+        Debug.Log("Crickets");
     }
 }
 

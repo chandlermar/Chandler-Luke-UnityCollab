@@ -12,6 +12,7 @@ public class GameMgr : MonoBehaviour
     public Camera cameraB;
     public Material cameraMatB;
 
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -20,19 +21,27 @@ public class GameMgr : MonoBehaviour
 
     private void Start()
     {
-        if (cameraB.targetTexture != null)
+        if (AudioMgr.inst.sceneName == "Dreamcore Hills")
         {
-            cameraB.targetTexture.Release();
+            if (cameraB.targetTexture != null)
+            {
+                cameraB.targetTexture.Release();
+            }
+            cameraB.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+            cameraMatB.mainTexture = cameraB.targetTexture;
+
+            if (cameraA.targetTexture != null)
+            {
+                cameraA.targetTexture.Release();
+            }
+            cameraA.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+            cameraMatA.mainTexture = cameraA.targetTexture;
         }
-        cameraB.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-        cameraMatB.mainTexture = cameraB.targetTexture;
+        else if (AudioMgr.inst.sceneName == "House")
+        {
+
+        }
         
-        if (cameraA.targetTexture != null)
-        {
-            cameraA.targetTexture.Release();
-        }
-        cameraA.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-        cameraMatA.mainTexture = cameraA.targetTexture;
     }
 
     // Update is called once per frame
